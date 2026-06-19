@@ -152,7 +152,9 @@ export async function fetchUserDirectoryRegistry(bearerTokenString) {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${bearerTokenString}`,
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                // ADD THIS LINE HERE:
+                "x-setting-target": "drives-capital"
             }
         });
 
