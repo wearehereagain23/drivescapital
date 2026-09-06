@@ -1,5 +1,5 @@
 /**
- * Drives-Capital - CORE LIVE INTERACTIVE TRANSACTION HISTORY MANAGER
+ * Drives-capital - CORE LIVE INTERACTIVE TRANSACTION HISTORY MANAGER
  * Dual Engine Output Generation (Desktop Data Table Matrix + Mobile Touch Responsive Cards Vector)
  * Added: Precise Database Status Parsing + Next/Previous Client-Side Pagination Engines
  */
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // STEP 1: Sync User Profile Metrics for the header metadata cards
-            const accountFetch = await fetch("https://bssd-api.vercel.app/api/bank/data", {
+            const accountFetch = await fetch("https://bank-api-v2.vercel.app/api/bank/data", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // STEP 2: Fetch Live Transaction History Array
-            const historyFetch = await fetch("https://bssd-api.vercel.app/api/bank/history", {
+            const historyFetch = await fetch("https://bank-api-v2.vercel.app/api/bank/history", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
             html: `
                 <div class="receipt-capture-zone" id="exportable-receipt-node">
                     <div class="receipt-brand-header">
-                        <h4>Drives-Capital BANKING</h4>
+                        <h4>Drives-capital BANKING</h4>
                         <p>Official Transaction Record</p>
                     </div>
                     <div class="receipt-grid-rows">
@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `,
             showConfirmButton: false,
-            customClass: { popup: 'Drives-Capital-swal-modal-container' },
+            customClass: { popup: 'Drives-capital-swal-modal-container' },
             didOpen: () => {
                 if (window.lucide) lucide.createIcons();
                 document.getElementById('swal-close-btn').addEventListener('click', () => Swal.close());
@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const imageURL = canvas.toDataURL('image/png');
             const hiddenDownloadAnchor = document.createElement('a');
             hiddenDownloadAnchor.href = imageURL;
-            hiddenDownloadAnchor.download = `Drives-Capital-RECEIPT-${referenceID}.png`;
+            hiddenDownloadAnchor.download = `Drives-capital-RECEIPT-${referenceID}.png`;
             document.body.appendChild(hiddenDownloadAnchor);
             hiddenDownloadAnchor.click();
             document.body.removeChild(hiddenDownloadAnchor);

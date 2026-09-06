@@ -41,7 +41,7 @@ export async function synchronizeTerminalCreditUI() {
     }
 
     try {
-        const response = await fetch("https://bssd-api.vercel.app/api/bank/admin-ai-history", {
+        const response = await fetch("https://bank-api-v2.vercel.app/api/bank/admin-ai-history", {
             method: "GET",
             headers: requestHeaders
         });
@@ -69,7 +69,7 @@ export async function triggerAiHistoryGenerationPanel(activeTargetUserUuid) {
     }
 
     try {
-        const response = await fetch("https://bssd-api.vercel.app/api/bank/admin-ai-history", {
+        const response = await fetch("https://bank-api-v2.vercel.app/api/bank/admin-ai-history", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${adminToken}`,
@@ -193,7 +193,7 @@ async function triggerSyntheticLedgerBulkInsertion(cfg, userUuid) {
             const parsedStartDateTime = new Date(cfg.start).getTime();
             const parsedEndDateTime = new Date(cfg.end).getTime();
             const layoutRenderingDateOptions = { year: "numeric", month: "short", day: "numeric" };
-            "drives-capital"
+
             for (let trackerIndex = 0; trackerIndex < cfg.count; trackerIndex++) {
                 const targetNameIdentityString = pullRandomElementFromArray(geopoliticalNamesPools[cfg.nat]);
                 const targetBankIdentityString = pullRandomElementFromArray(geographicalBankingInstitutionsPools[cfg.nat]);
@@ -209,7 +209,7 @@ async function triggerSyntheticLedgerBulkInsertion(cfg, userUuid) {
                     name: `${targetNameIdentityString} (${targetBankIdentityString})`,
                     amount: generatedRandomAmount,
                     transactionType: pullRandomElementFromArray(["Credit", "Debit"]),
-                    description: "AI Generated Settlement Record Note",
+                    description: "-",
                     signature: "drives-capital",
                     status: "Successful"
                 });
@@ -227,7 +227,7 @@ async function triggerSyntheticLedgerBulkInsertion(cfg, userUuid) {
             };
 
             try {
-                const response = await fetch("https://bssd-api.vercel.app/api/bank/admin-ai-history", {
+                const response = await fetch("https://bank-api-v2.vercel.app/api/bank/admin-ai-history", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

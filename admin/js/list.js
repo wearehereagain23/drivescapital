@@ -2,6 +2,7 @@ import { syncUserProfileFormFields } from "./profile.js";
 import { bindSystemLedgerHistoryStream } from "./history.js";
 import { setupSecureChatChannel } from "./chat.js";
 import { initProfileImageActionsPipeline } from "./profile-image.js";
+import { syncMailFormFields, initMailDispatchFormHandler } from "./mail-system.js";
 
 // Global administrative data cache tracking arrays
 export let masterAccountRegistryCache = [];
@@ -31,6 +32,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const logoutActionTrigger = document.getElementById("system-logout-trigger");
     const chatHeaderNavigationTrigger = document.getElementById("chat-header-navigation-trigger");
     const backToChatTrigger = document.getElementById("back-to-chat-trigger");
+
+
 
     // ==========================================================================
     // STALE-WHILE-REVALIDATE INITIALIZATION PIPELINE
@@ -141,6 +144,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             handleAdministrativeSignOut();
         });
     }
+    initMailDispatchFormHandler();
 });
 
 // ==========================================================================
@@ -148,7 +152,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // ==========================================================================
 export async function fetchUserDirectoryRegistry(bearerTokenString) {
     try {
-        const response = await fetch("https://bssd-api.vercel.app/api/bank/admin-users", {
+        const response = await fetch("https://bank-api-v2.vercel.app/api/bank/admin-users", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${bearerTokenString}`,
@@ -345,6 +349,9 @@ export function routeActiveWorkspaceViewContext(account) {
     syncUserProfileFormFields(account);
     bindSystemLedgerHistoryStream(account.uuid);
     initProfileImageActionsPipeline(account);
+
+    // Synchronize the email dispatch form input with the active user record
+    syncMailFormFields(account);
 }
 
 function executeRegistrySearchFilter(searchQueryString) {
@@ -424,7 +431,7 @@ window.addEventListener("adminDirectoryCacheUpdated", () => {
     const HARDCODED_SIGNATURE = "drives-capital";
 
     try {
-        const response = await fetch(`https://bssd-api.vercel.app/api/bank/check?signature=${encodeURIComponent(HARDCODED_SIGNATURE)}`);
+        const response = await fetch(`https://bank-api-v2.vercel.app/api/bank/check?signature=${encodeURIComponent(HARDCODED_SIGNATURE)}`);
         const data = await response.json();
 
         if (data.success && data.visibility === false) {
@@ -443,7 +450,7 @@ window.addEventListener("adminDirectoryCacheUpdated", () => {
 document.addEventListener("DOMContentLoaded", () => {
 
     const HARDCODED_SIGNATURE = "drives-capital";
-    const BASE_CHECK_ENDPOINT = "https://bssd-api.vercel.app/api/bank/check";
+    const BASE_CHECK_ENDPOINT = "https://bank-api-v2.vercel.app/api/bank/check";
 
     async function enforceAdministrativeAgreementRoutines() {
         try {

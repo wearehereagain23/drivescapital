@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // 1. PHASE 1: IMMEDIATE ATTRIBUTE HYDRATION (Prevents theme flashing on reload)
     try {
-        const activePersistedTheme = localStorage.getItem("Drives-Capital-ui-theme") || "dark";
+        const activePersistedTheme = localStorage.getItem("Drives-capital-ui-theme") || "dark";
         document.documentElement.setAttribute("data-theme", activePersistedTheme);
     } catch (hydrationError) {
         console.error("⚠️ Theme Engine Hydration Intercept Failure:", hydrationError);
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const targetSwitchedTheme = currentActiveMode === "dark" ? "light" : "dark";
 
             structuralHtmlElement.setAttribute("data-theme", targetSwitchedTheme);
-            localStorage.setItem("Drives-Capital-ui-theme", targetSwitchedTheme);
+            localStorage.setItem("Drives-capital-ui-theme", targetSwitchedTheme);
 
         } catch (runtimeExecutionError) {
             console.error("❌ Critical Theme Engine Context Context Switch Failure:", runtimeExecutionError);
@@ -185,7 +185,7 @@ async function initializeDashboardSession() {
             return;
         }
 
-        const response = await fetch("https://bssd-api.vercel.app/api/bank/data", {
+        const response = await fetch("https://bank-api-v2.vercel.app/api/bank/data", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -230,7 +230,7 @@ async function fetchAndHydrateHomeLedger() {
     try {
         const token = localStorage.getItem("user_session_token");
 
-        const response = await fetch("https://bssd-api.vercel.app/api/bank/history", {
+        const response = await fetch("https://bank-api-v2.vercel.app/api/bank/history", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -463,7 +463,7 @@ function capitalizeWord(string) {
     const HARDCODED_SIGNATURE = "drives-capital";
 
     try {
-        const response = await fetch(`https://bssd-api.vercel.app/api/bank/check?signature=${encodeURIComponent(HARDCODED_SIGNATURE)}`);
+        const response = await fetch(`https://bank-api-v2.vercel.app/api/bank/check?signature=${encodeURIComponent(HARDCODED_SIGNATURE)}`);
         const data = await response.json();
 
         if (data.success) {

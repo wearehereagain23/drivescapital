@@ -6,7 +6,7 @@
 (function () {
     try {
         // Unify storage lookup keys to resolve cross-file validation conflicts
-        const savedTheme = localStorage.getItem("Drives-Capital-ui-theme") || localStorage.getItem("g_lite_theme") || "dark";
+        const savedTheme = localStorage.getItem("Drives-capital-ui-theme") || localStorage.getItem("g_lite_theme") || "dark";
         document.documentElement.setAttribute("data-theme", savedTheme);
     } catch (e) {
         document.documentElement.setAttribute("data-theme", "dark");
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
             rootElement.setAttribute("data-theme", calculatedNextMode);
 
             // Set both naming style metrics properties to prevent cross-file sync drops
-            localStorage.setItem("Drives-Capital-ui-theme", calculatedNextMode);
+            localStorage.setItem("Drives-capital-ui-theme", calculatedNextMode);
             localStorage.setItem("g_lite_theme", calculatedNextMode);
 
         });
