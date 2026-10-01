@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cachedAccountNum = localStorage.getItem("g_lite_user_accountnumber") || "Trace Suspended";
 
         let depositData = {
-            bankName: "Drives-capital Bank",
+            bankName: "Drives-Capital Bank",
             holderName: cachedFullName,
             accountNumber: cachedAccountNum
         };

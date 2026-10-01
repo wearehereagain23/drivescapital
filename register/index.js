@@ -1,5 +1,5 @@
 /**
- * Drives-capital BANK APPLICATION CLIENT SIDE FORM VALIDATION ENGINE
+ * Drives-Capital BANK APPLICATION CLIENT SIDE FORM VALIDATION ENGINE
  */
 document.addEventListener("DOMContentLoaded", () => {
     // DOM Target References Mappings

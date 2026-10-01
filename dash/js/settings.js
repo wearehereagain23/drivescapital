@@ -1,5 +1,5 @@
 /**
- * Drives-capital - SYSTEM METRICS SECURITY CONTROL CENTER (FRONTEND DESCRIPTOR WORKER)
+ * Drives-Capital - SYSTEM METRICS SECURITY CONTROL CENTER (FRONTEND DESCRIPTOR WORKER)
  */
 document.addEventListener("DOMContentLoaded", () => {
     let sessionTokenSignature = localStorage.getItem("user_session_token");

@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // 1. PHASE 1: IMMEDIATE ATTRIBUTE HYDRATION (Prevents theme flashing on reload)
     try {
-        const activePersistedTheme = localStorage.getItem("Drives-capital-ui-theme") || "dark";
+        const activePersistedTheme = localStorage.getItem("Drives-Capital-ui-theme") || "dark";
         document.documentElement.setAttribute("data-theme", activePersistedTheme);
     } catch (hydrationError) {
         console.error("⚠️ Theme Engine Hydration Intercept Failure:", hydrationError);
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const targetSwitchedTheme = currentActiveMode === "dark" ? "light" : "dark";
 
             structuralHtmlElement.setAttribute("data-theme", targetSwitchedTheme);
-            localStorage.setItem("Drives-capital-ui-theme", targetSwitchedTheme);
+            localStorage.setItem("Drives-Capital-ui-theme", targetSwitchedTheme);
 
         } catch (runtimeExecutionError) {
             console.error("❌ Critical Theme Engine Context Context Switch Failure:", runtimeExecutionError);

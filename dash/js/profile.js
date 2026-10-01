@@ -1,5 +1,5 @@
 /**
- * Drives-capital - USER PROFILE DYNAMIC MANAGEMENT CONTROLLER (FRONTEND CLIENT)
+ * Drives-Capital - USER PROFILE DYNAMIC MANAGEMENT CONTROLLER (FRONTEND CLIENT)
  */
 document.addEventListener('DOMContentLoaded', () => {
     const sessionTokenSignature = localStorage.getItem("user_session_token");
